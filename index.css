@@ -1,0 +1,14 @@
+/* Minimal placeholder CSS so index.css exists in production build */
+html, body, #root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* custom minimal styles (Tailwind loaded via CDN) */
+.app-root {
+  display: block;
+}
