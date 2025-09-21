@@ -6,8 +6,6 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
       plugins: [react()],
-        // Force base to the repository path to ensure correct asset URLs on GitHub Pages.
-        base: mode === 'production' ? '/11/' : '/',
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)

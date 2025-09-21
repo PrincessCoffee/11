@@ -18,11 +18,11 @@ const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose, menuCategories, 
             onClick={onClose}
         >
             <div
-                className="bg-brand-green/70 backdrop-blur-lg border-2 border-brand-gold/50 rounded-xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto relative animate-card-entry"
+                className="bg-brand-green border-2 border-brand-gold rounded-xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto relative animate-fade-in-up"
                 onClick={(e) => e.stopPropagation()}
             >
-                <div className="sticky top-0 bg-brand-green/80 backdrop-blur-sm p-4 border-b-2 border-brand-gold z-10 flex justify-between items-center">
-                    <h2 className="text-3xl font-bold font-cinzel text-brand-gold">{title}</h2>
+                <div className="sticky top-0 bg-brand-green p-4 border-b-2 border-brand-gold z-10 flex justify-between items-center">
+                    <h2 className="text-3xl font-bold text-brand-gold">{title}</h2>
                     <button 
                         onClick={onClose}
                         className="text-brand-gold hover:text-white transition-colors"
@@ -35,15 +35,17 @@ const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose, menuCategories, 
                 <div className="p-6">
                     <div className="space-y-8">
                         {menuCategories.map((category) => (
-                            <div key={category.title}>
-                                <h3 className="text-2xl font-bold font-cinzel text-brand-gold border-b-2 border-brand-gold/50 pb-2 mb-4">
-                                    {category.title}
+                            <div key={category.name}>
+                                <h3 className="text-2xl font-bold text-brand-gold mb-4 border-b-2 border-brand-gold/50 pb-2">
+                                    {category.name}
                                 </h3>
-                                <ul className="space-y-4">
+                                <ul className="space-y-6">
                                     {category.items.map((item) => (
-                                        <li key={item.name}>
-                                            <h4 className="text-xl font-semibold text-white">{item.name}</h4>
-                                            <p className="text-gray-300 text-sm mt-1">{item.description}</p>
+                                        <li key={item.name} className="border-b border-brand-gold/30 pb-4 last:border-b-0">
+                                            <div className="text-right sm:text-left rtl:sm:text-right">
+                                                <h4 className="text-xl font-bold text-white">{item.name}</h4>
+                                                <p className="text-gray-300 text-sm mt-1">{item.description}</p>
+                                            </div>
                                         </li>
                                     ))}
                                 </ul>
