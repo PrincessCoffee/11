@@ -30,14 +30,14 @@ const App: React.FC = () => {
     const handleLanguageToggle = () => {
         setIsFading(true);
         setTimeout(() => {
-            setLanguage(prev => (prev === 'en' ? 'ar' : 'en'));
+            setLanguage((prev: 'en' | 'ar') => (prev === 'en' ? 'ar' : 'en'));
             setIsFading(false);
         }, 300);
     };
 
     return (
-        <div className="min-h-screen text-white flex items-center justify-center p-4 overflow-hidden relative font-lato">
-            <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('https://images.unsplash.com/photo-1511920183353-3c7c95a57422?q=80&w=3387&auto=format&fit=crop')", filter: 'blur(8px) brightness(0.6)'}}></div>
+        <div className="min-h-screen text-white flex items-center justify-center p-4 relative font-lato" style={{background: '#000000'}}>
+            <div className="absolute inset-0" style={{background: '#000000'}}></div>
             
             <button
                 onClick={handleLanguageToggle}
@@ -48,44 +48,57 @@ const App: React.FC = () => {
             </button>
 
             <div style={{ perspective: '1000px' }} className={`w-full max-w-md mx-auto transition-opacity duration-300 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
-                <div className="bg-brand-green/70 backdrop-blur-lg border-2 border-brand-gold rounded-2xl shadow-2xl p-8 text-center relative z-10 animate-card-entry transition-transform duration-300 hover:[transform:rotateY(var(--rotate-y,0))rotateX(var(--rotate-x,0))scale(1.05)]">
+                <div className="rounded-2xl shadow-2xl p-8 text-center relative z-10 animate-card-entry transition-transform duration-300 w-full" style={{background: 'linear-gradient(135deg, #2d5a5a 0%, #1a4040 100%)', border: '2px solid #d4af37'}}>
                     <header className="mb-8">
-                        <div className="animate-float">
+                        <div className="animate-float mb-6">
                             <img 
-                                src="https://i.imgur.com/k2gY1rC.png" 
+                                src="/princess-coffee-logo.jpg" 
                                 alt="Princess Coffee Logo" 
-                                className="w-40 h-40 mx-auto rounded-full object-cover shadow-2xl border-4 border-brand-gold"
+                                className="w-32 h-32 mx-auto rounded-full object-cover shadow-2xl animate-pulse-glow"
+                                style={{border: '3px solid #d4af37'}}
+                                onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.src = '/vite.svg';
+                                }}
                             />
                         </div>
-                        <h1 className="text-5xl font-bold mt-6 font-cinzel text-shadow text-white">
+                        <h1 className="text-3xl md:text-4xl font-bold font-cinzel text-white mb-3 text-shadow">
                             {t.title}
                         </h1>
-                        <p className="text-brand-gold text-lg mt-2 font-cinzel">
+                        <p className="text-base md:text-lg font-cinzel mb-2" style={{color: '#d4af37'}}>
                             {t.subtitle}
                         </p>
                     </header>
 
-                    <main className="space-y-4">
-                        {t.socialLinks.map((link: SocialLink) => (
-                            <SocialLinkButton 
-                                key={link.name} 
-                                href={link.href} 
-                                icon={link.icon} 
-                                text={link.name}
-                            />
-                        ))}
+                    <main className="space-y-4 w-full">
+                        <div className="space-y-3">
+                            {t.socialLinks.map((link: SocialLink) => (
+                                <SocialLinkButton 
+                                    key={link.name} 
+                                    href={link.href} 
+                                    icon={link.icon} 
+                                    text={link.name}
+                                />
+                            ))}
+                        </div>
                         
                         <button
                             onClick={() => setIsMenuOpen(true)}
-                            className="group w-full bg-brand-gold text-brand-green font-bold py-3 px-6 rounded-lg flex items-center justify-center space-x-3 transition-all duration-300 ease-in-out hover:bg-yellow-500 transform hover:scale-105 animate-pulse-glow"
+                            className="group w-full font-bold py-4 px-6 rounded-lg flex items-center justify-center space-x-3 transition-all duration-300 ease-in-out transform hover:scale-105 mt-6 animate-pulse-glow"
+                            style={{
+                                background: '#d4af37',
+                                color: '#2d5a5a',
+                                border: 'none',
+                                boxShadow: '0 4px 15px rgba(212, 175, 55, 0.3)'
+                            }}
                         >
                             <CoffeeIcon className="w-6 h-6 transition-transform duration-300 group-hover:rotate-12" />
-                            <span className="font-semibold">{t.viewMenu}</span>
+                            <span className="font-semibold text-lg">{t.viewMenu}</span>
                         </button>
                     </main>
                     
-                    <footer className="mt-12 text-center text-gray-400 text-sm">
-                        <p>{t.footer}</p>
+                    <footer className="mt-8 text-center text-sm opacity-75" style={{color: '#d4af37'}}>
+                        <p className="font-cinzel">{t.footer}</p>
                     </footer>
                 </div>
             </div>

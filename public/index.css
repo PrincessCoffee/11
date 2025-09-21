@@ -1,0 +1,112 @@
+:root{
+  --brand-green: #123B3A;
+  --brand-gold: #D4B24D;
+}
+
+html, body, #root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: #000; /* dark background as in design */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  direction: rtl;
+}
+
+/* Card layout to match the screenshot */
+.site-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* keep card to the left on wide screens */
+  padding: 3.5rem 2rem;
+}
+
+.site-card {
+  width: 380px;
+  background: linear-gradient(180deg, rgba(28,72,71,0.95), rgba(20,50,49,0.95));
+  border-radius: 18px;
+  border: 3px solid var(--brand-gold);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+  padding: 2.25rem;
+}
+
+.site-card img {
+  width: 160px;
+  height: 160px;
+  border-radius: 9999px;
+  margin: 0 auto;
+  display: block;
+  object-fit: cover;
+  border: 5px solid var(--brand-gold);
+}
+
+.site-title {
+  font-size: 2.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
+.site-subtitle {
+  color: var(--brand-gold);
+  font-size: 1.05rem;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--brand-gold);
+  color: var(--brand-gold);
+  background: transparent;
+}
+
+/* RTL: place icon on the right and text to the left */
+[dir="rtl"] .social-btn {
+  flex-direction: row-reverse;
+}
+
+.social-btn:hover{
+  background: var(--brand-gold);
+  color: var(--brand-green);
+}
+
+.cta-btn {
+  background: var(--brand-gold);
+  color: var(--brand-green);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  font-weight: 700;
+}
+
+.footer-small{
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+  margin-top: 1.25rem;
+}
+
+/* language toggle button (top-right) */
+.lang-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: var(--brand-gold);
+  color: var(--brand-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  z-index: 40;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 768px){
+  .site-wrapper{ justify-content: center; padding: 1rem }
+  .site-card{ width: 92%; }
+}
